@@ -1,24 +1,20 @@
 package org.meteo_express_back.controller;
 
-import org.meteo_express_back.model.Location;
-import org.meteo_express_back.repository.LocationRepository;
+import org.meteo_express_back.service.MeteoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Optional;
 
 @RestController
 public class MeteoController {
 
     @Autowired
-    private LocationRepository locationRepository;
+    private MeteoService meteoService;
 
-    @GetMapping("/locations/{ville}")
-    public ResponseEntity<Location> getLocationByVille(@PathVariable String ville) {
-        Optional<Location> location = locationRepository.findByVille(ville);
-        return location.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    @GetMapping("/meteo")
+    public ResponseEntity<String> getMeteoData(@RequestParam(required = false) String ville, @RequestParam(required = false) Integer fenetre) {
+        return meteoService.getMeteoData(ville, fenetre);
     }
 }
