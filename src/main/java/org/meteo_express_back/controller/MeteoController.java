@@ -14,7 +14,11 @@ public class MeteoController {
     private MeteoService meteoService;
 
     @GetMapping("/meteo")
-    public ResponseEntity<String> getMeteoData(@RequestParam(required = false) String ville, @RequestParam(required = false) Integer fenetre) {
-        return meteoService.getMeteoData(ville, fenetre);
+    public ResponseEntity<String> getMeteoData(
+            @RequestParam(required = false) String ville,
+            @RequestParam(required = false) Integer fenetre,
+            @RequestParam(required = false) String heureDebut,
+            @RequestParam(required = false) String heureFin) {
+        return meteoService.getMeteoData(ville, fenetre, heureDebut, heureFin);
     }
 }
