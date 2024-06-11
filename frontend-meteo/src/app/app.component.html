@@ -19,12 +19,12 @@
         [(ngModel)]="filters.location"
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
       >
-        <option *ngFor="let location of locations" [value]="location.name">
-          {{ location.name }}
+        <option *ngFor="let location of locations" [value]="location">
+          {{ location }}
         </option>
       </select>
     </div>
-    <div class="mb-4">
+    <!-- <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="startDate"
         >Date de début</label
       >
@@ -47,7 +47,7 @@
         type="date"
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
       />
-    </div>
+    </div> -->
     <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="startTime"
         >Heure de début</label
@@ -72,10 +72,11 @@
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
       />
     </div>
+
     <button
       type="button"
       (click)="getCarbonIntensity()"
-      class="bg-blue-500 flex w-full justify-center items-center hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      class="bg-blue-500 mb-4 flex w-full justify-center items-center hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
     >
       <svg
         class="w-4 h-4 mr-2"
@@ -94,6 +95,19 @@
       </svg>
       Rechercher
     </button>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="intensity"
+        >Indicateur d'intensité (Max)</label
+      >
+      <input
+        [(ngModel)]="indicateur"
+        (ngModelChange)="onIntensityChange()"
+        name="intensity"
+        id="intensity"
+        type="number"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      />
+    </div>
   </div>
 
   <!-- Main Content -->
@@ -113,13 +127,13 @@
           </h1>
           <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
             <span
-              *ngIf="moyCarbonIntensity > 100"
+              *ngIf="moyCarbonIntensity > indicateur"
               class="bg-red-200 text-red-900 text-xs font-medium me-2 px-2 py-0.5 rounded dark:bg-red-900 dark:text-red-300"
             >
               Intensité élevée
             </span>
             <span
-              *ngIf="moyCarbonIntensity <= 100"
+              *ngIf="moyCarbonIntensity <= indicateur"
               class="bg-green-200 text-green-900 text-xs font-medium me-2 px-2 py-0.5 rounded dark:bg-green-900 dark:text-green-300"
             >
               Intensité faible
@@ -175,7 +189,9 @@
                 <td class="px-4 py-3 text-lg text-green-900">
                   <span
                     [ngClass]="
-                      (entry.intensity >= 100 ? 'bg-red-200' : 'bg-green-200') +
+                      (entry.intensity >= indicateur
+                        ? 'bg-red-200'
+                        : 'bg-green-200') +
                       ' text-gray-900 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center'
                     "
                   >
