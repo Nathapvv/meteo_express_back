@@ -1,7 +1,7 @@
 <app-loader></app-loader>
 <div class="flex h-full font-sans">
   <!-- Sidebar -->
-  <div class="w-1/4 bg-white h-screen p-4 shadow-lg fixed">
+  <div class="fixed w-1/4 h-screen p-4 bg-white shadow-lg">
     <div class="p-4">
       <img
         src="../assets/mto-express-high-resolution-logo-black-transparent.png"
@@ -9,23 +9,23 @@
       />
     </div>
 
-    <h2 class="text-xl font-bold mb-4">Filtres</h2>
+    <h2 class="mb-4 text-xl font-bold">Filtres</h2>
 
     <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="location"
+      <label class="block mb-2 text-sm font-bold text-gray-700" for="location"
         >Lieu</label
       >
       <select
         [(ngModel)]="filters.location"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
       >
         <option *ngFor="let location of locationList" [value]="location">
           {{ location }}
         </option>
       </select>
     </div>
-    <!-- <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="startDate"
+    <div class="mb-4">
+      <label class="block mb-2 text-sm font-bold text-gray-700" for="startDate"
         >Date de début</label
       >
       <input
@@ -33,11 +33,11 @@
         name="startDate"
         id="startDate"
         type="date"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
       />
     </div>
     <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="endDate"
+      <label class="block mb-2 text-sm font-bold text-gray-700" for="endDate"
         >Date de fin</label
       >
       <input
@@ -45,11 +45,11 @@
         name="endDate"
         id="endDate"
         type="date"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
       />
-    </div> -->
-    <div class="mb-4 relative">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="startTime">
+    </div>
+    <div class="relative mb-4">
+      <label class="block mb-2 text-sm font-bold text-gray-700" for="startTime">
         Heure de début
       </label>
       <input
@@ -57,20 +57,20 @@
         name="startTime"
         id="startTime"
         type="time"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline pr-10"
+        class="w-full px-3 py-2 pr-10 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
       />
       <button
         type="button"
         style="margin-top: 37px"
-        class="absolute right-0 top-0 mr-3 text-gray-500 hover:text-gray-700"
+        class="absolute top-0 right-0 mr-3 text-gray-500 hover:text-gray-700"
         (click)="resetStartTime()"
       >
         &#x2715;
       </button>
     </div>
 
-    <div class="mb-4 relative">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="endTime">
+    <div class="relative mb-4">
+      <label class="block mb-2 text-sm font-bold text-gray-700" for="endTime">
         Heure de fin
       </label>
       <input
@@ -78,12 +78,12 @@
         name="endTime"
         id="endTime"
         type="time"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline pr-10"
+        class="w-full px-3 py-2 pr-10 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
       />
       <button
         type="button"
         style="margin-top: 37px"
-        class="absolute right-0 top-0 mr-3 text-gray-500 hover:text-gray-700"
+        class="absolute top-0 right-0 mr-3 text-gray-500 hover:text-gray-700"
         (click)="resetEndTime()"
       >
         &#x2715;
@@ -92,7 +92,7 @@
 
     <div class="mb-4">
       <label
-        class="block text-gray-700 text-sm font-bold mb-2"
+        class="block mb-2 text-sm font-bold text-gray-700"
         for="fenetreHoraire"
       >
         Fenêtre horaire
@@ -103,14 +103,14 @@
         id="fenetreHoraire"
         type="number"
         [min]="0"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
       />
     </div>
 
     <button
       type="button"
       (click)="getCarbonIntensity()"
-      class="bg-blue-500 mb-4 flex w-full justify-center items-center hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      class="flex items-center justify-center w-full px-4 py-2 mb-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
     >
       <svg
         class="w-4 h-4 mr-2"
@@ -131,7 +131,7 @@
     </button>
 
     <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="intensity">
+      <label class="block mb-2 text-sm font-bold text-gray-700" for="intensity">
         indicatorValue d'intensité (Max)
       </label>
       <input
@@ -141,26 +141,26 @@
         id="intensity"
         [min]="0"
         type="number"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
       />
     </div>
-    <div class="mb-4 flex space-x-2">
+    <div class="flex mb-4 space-x-2">
       <div class="relative group">
         <button
           type="button"
-          class="shadow appearance-none border rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-200 hover:bg-gray-300"
+          class="px-4 py-2 leading-tight text-gray-700 bg-gray-200 border rounded shadow appearance-none focus:outline-none focus:shadow-outline hover:bg-gray-300"
           (click)="setConditionIndicator('greaterOrEqual')"
         >
           &ge;
         </button>
         <div
           *ngIf="indicatorCondition === 'greaterOrEqual'"
-          class="absolute left-1/2 transform -translate-x-1/2 mt-2"
+          class="absolute mt-2 transform -translate-x-1/2 left-1/2"
         >
           <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
         </div>
         <div
-          class="absolute bottom-full mb-2 hidden group-hover:block bg-gray-700 text-white text-xs rounded py-1 px-2"
+          class="absolute hidden px-2 py-1 mb-2 text-xs text-white bg-gray-700 rounded bottom-full group-hover:block"
         >
           Affiche incorrecte toutes les valeurs qui seront supérieures ou égales
           à elle.
@@ -169,19 +169,19 @@
       <div class="relative group">
         <button
           type="button"
-          class="shadow appearance-none border rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-200 hover:bg-gray-300"
+          class="px-4 py-2 leading-tight text-gray-700 bg-gray-200 border rounded shadow appearance-none focus:outline-none focus:shadow-outline hover:bg-gray-300"
           (click)="setConditionIndicator('greater')"
         >
           &gt;
         </button>
         <div
           *ngIf="indicatorCondition === 'greater'"
-          class="absolute left-1/2 transform -translate-x-1/2 mt-2"
+          class="absolute mt-2 transform -translate-x-1/2 left-1/2"
         >
           <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
         </div>
         <div
-          class="absolute bottom-full mb-2 hidden group-hover:block bg-gray-700 text-white text-xs rounded py-1 px-2"
+          class="absolute hidden px-2 py-1 mb-2 text-xs text-white bg-gray-700 rounded bottom-full group-hover:block"
         >
           Affiche incorrecte toutes les valeurs qui seront supérieures à elle.
         </div>
@@ -193,9 +193,9 @@
   <div class="w-3/4 p-6" style="margin-left: calc(100% / 4)">
     <section
       *ngIf="carbonData.length == 0"
-      class="text-gray-600 flex items-center justify-center h-full body-font p-8"
+      class="flex items-center justify-center h-full p-8 text-gray-600 body-font"
     >
-      <div class="flex items-center justify-center flex-col">
+      <div class="flex flex-col items-center justify-center">
         <img src="../assets/animated/rainy-7.svg" alt="" style="width: 240px" />
         <p>Please change filter</p>
       </div>
@@ -205,18 +205,18 @@
     <section *ngIf="carbonData.length > 0">
       <section class="text-gray-600 body-font">
         <div class="container px-5 py-24 pb-4 mx-auto">
-          <div class="flex flex-col text-center w-full mb-20">
+          <div class="flex flex-col w-full mb-20 text-center">
             <h2
-              class="text-xs text-blue-500 tracking-widest font-medium title-font mb-1"
+              class="mb-1 text-xs font-medium tracking-widest text-blue-500 title-font"
             >
               Moyenne de l'intensité carbonne à {{ this.carbonLocation }}
             </h2>
             <h1
-              class="sm:text-3xl text-2xl font-medium title-font my-4 text-gray-900"
+              class="my-4 text-2xl font-medium text-gray-900 sm:text-3xl title-font"
             >
               {{ carbonMoyIntensity | number : "1.0-2" }} gCO₂/kWh
             </h1>
-            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+            <p class="mx-auto text-base leading-relaxed lg:w-2/3">
               <span
                 *ngIf="!checkIntensityIndicator(carbonMoyIntensity)"
                 class="bg-red-200 text-red-900 text-xs font-medium me-2 px-2 py-0.5 rounded dark:bg-red-900 dark:text-red-300"
@@ -234,39 +234,39 @@
         </div>
       </section>
       <section class="text-gray-600 body-font">
-        <div class="container px-5 pt-4 py-12 mx-auto">
-          <div class="flex flex-col text-center w-full mb-20">
+        <div class="container px-5 py-12 pt-4 mx-auto">
+          <div class="flex flex-col w-full mb-20 text-center">
             <h1
-              class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900"
+              class="mb-2 text-3xl font-medium text-gray-900 sm:text-4xl title-font"
             >
               Historique de l'intensité carbone
             </h1>
-            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+            <p class="mx-auto text-base leading-relaxed lg:w-2/3">
               L'historique de l'intensité carbone pour le lieu sélectionné sur
               la période donnée
             </p>
           </div>
-          <div class="lg:w-2/3 w-full mx-auto overflow-auto">
-            <table class="table-auto w-full text-left whitespace-no-wrap">
+          <div class="w-full mx-auto overflow-auto lg:w-2/3">
+            <table class="w-full text-left whitespace-no-wrap table-auto">
               <thead>
                 <tr>
                   <th
-                    class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl"
+                    class="px-4 py-3 text-sm font-medium tracking-wider text-gray-900 bg-gray-100 rounded-tl rounded-bl title-font"
                   >
                     Date
                   </th>
                   <th
-                    class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"
+                    class="px-4 py-3 text-sm font-medium tracking-wider text-gray-900 bg-gray-100 title-font"
                   >
                     Heure
                   </th>
                   <th
-                    class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"
+                    class="px-4 py-3 text-sm font-medium tracking-wider text-gray-900 bg-gray-100 title-font"
                   >
                     Intensité carbonne
                   </th>
                   <th
-                    class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"
+                    class="px-4 py-3 text-sm font-medium tracking-wider text-gray-900 bg-gray-100 title-font"
                   >
                     indicatorValue
                   </th>

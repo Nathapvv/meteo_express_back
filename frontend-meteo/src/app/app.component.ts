@@ -238,7 +238,7 @@ export class AppComponent implements OnInit {
 
     try {
       const response: any = await lastValueFrom(
-        this.apiService.getMeteoData(
+        this.apiService.getMeteoDataToday(
           this.filters.location,
           this.filters.fenetre,
           this.filters.startTime,

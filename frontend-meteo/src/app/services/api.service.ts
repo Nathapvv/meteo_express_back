@@ -6,7 +6,7 @@ import { LogService } from './log.service';
 
 @Injectable()
 export class ApiService {
-  private apiGetIntensity = environment.baseUrlBack + 'meteo';
+  private apiGetIntensity = environment.baseUrlBack + 'meteo/meteotoday';
   private apiGetLocation = environment.baseUrlBack + 'locations';
 
   constructor(private http: HttpClient, private logService: LogService) {}
@@ -14,28 +14,28 @@ export class ApiService {
   /**
    * Cette fonction TypeScript récupère des données météorologiques en fonction de paramètres facultatifs
    * tels que la ville, la fenêtre horaire, l'heure de début et l'heure de fin.
-   * @param {string} [ville] - Le paramètre `ville` dans la méthode `getMeteoData` est utilisé pour
+   * @param {string} [ville] - Le paramètre `ville` dans la méthode `getMeteoDataToday` est utilisé pour
    * spécifier la ville pour laquelle vous souhaitez récupérer les données météo. Si une valeur « ville »
    * est fournie lors de l'appel de cette méthode, elle sera incluse en tant que paramètre de requête
    * dans la requête HTTP pour récupérer les données météorologiques.
-   * @param {number} [fenetre] - Le paramètre `fenetre` dans la méthode `getMeteoData` est utilisé pour
+   * @param {number} [fenetre] - Le paramètre `fenetre` dans la méthode `getMeteoDataToday` est utilisé pour
    * spécifier une fenêtre horaire pour récupérer les données météorologiques. Il est de type « nombre »
    * et représente la durée de la fenêtre horaire dans une certaine unité (par exemple, les heures). Ce
    * paramètre permet de filtrer les
-   * @param {string} [heureDebut] - Le paramètre `heureDebut` dans la fonction `getMeteoData` représente
+   * @param {string} [heureDebut] - Le paramètre `heureDebut` dans la fonction `getMeteoDataToday` représente
    * l'heure de début pour laquelle vous souhaitez récupérer les données météo. Il s'agit d'un paramètre
    * de chaîne qui spécifie l'heure de début de la fenêtre de données qui vous intéresse.
-   * @param {string} [heureFin] - Le paramètre `heureFin` dans la méthode `getMeteoData` représente
+   * @param {string} [heureFin] - Le paramètre `heureFin` dans la méthode `getMeteoDataToday` représente
    * l'heure de fin pour laquelle vous souhaitez récupérer les données météorologiques. Elle est
    * facultative et vous permet de spécifier une heure de fin spécifique pour la récupération des
    * données. Si fourni, la méthode inclura ce paramètre dans la requête HTTP
-   * @returns La méthode `getMeteoData` renvoie un Observable qui effectue une requête HTTP GET pour
+   * @returns La méthode `getMeteoDataToday` renvoie un Observable qui effectue une requête HTTP GET pour
    * récupérer les données météorologiques. La méthode accepte des paramètres facultatifs pour la ville
    * (ville), la fenêtre horaire (fenetre), l'heure de début (heureDebut) et l'heure de fin (heureFin).
    * Ces paramètres sont ajoutés à l'URL de la demande en tant que paramètres de requête à l'aide de
    * HttpParams. La méthode appelle ensuite la méthode `get` du HttpClient
    */
-  public getMeteoData(
+  public getMeteoDataToday(
     ville?: string,
     fenetre?: number,
     heureDebut?: string,
