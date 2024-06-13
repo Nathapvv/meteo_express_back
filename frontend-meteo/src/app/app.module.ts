@@ -9,9 +9,16 @@ import { LogService } from './services/log.service';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from './components/loader/loader.component';
 import { LoaderService } from './services/loader.service';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, HttpClientModule, CommonModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    CommonModule,
+    NgApexchartsModule,
+  ],
   declarations: [AppComponent, LoaderComponent],
   providers: [ApiService, LogService, LoaderService],
   bootstrap: [AppComponent],

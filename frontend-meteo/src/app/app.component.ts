@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from './services/api.service';
 import { lastValueFrom } from 'rxjs';
 import { LoaderService } from './services/loader.service';
@@ -24,6 +24,8 @@ export class AppComponent implements OnInit {
     endTime: '',
     fenetre: 0,
   };
+  public chartOptions: any = null;
+  public isGraph = false;
   public carbonData: any[] = [];
   public carbonMoyIntensity = 0;
   public carbonLocation: string = '';
@@ -136,6 +138,43 @@ export class AppComponent implements OnInit {
     localStorage.setItem(keyStorageIndicatorCondition, this.indicatorCondition);
   }
 
+  private updateChatOptions() {
+    let chartOptions: any = {
+      series: [
+        {
+          name: 'Intensité carbonne',
+          data: [],
+        },
+        {
+          name: 'Indicateur',
+          data: [],
+          color: '#FF0000',
+        },
+      ],
+      chart: {
+        height: 350,
+        width: 720,
+        type: 'line',
+      },
+      dataLabels: {
+        enabled: false,
+      },
+      xaxis: {
+        categories: [],
+      },
+      title: {
+        text: 'Intensité carbonne par heure',
+      },
+    };
+    for (let index = 0; index < this.carbonData.length; index++) {
+      const element = this.carbonData[index];
+      chartOptions.series[0].data.push(element.intensity);
+      chartOptions.series[1].data.push(this.indicatorValue);
+      chartOptions.xaxis.categories.push(element.date + ' ' + element.time);
+    }
+    this.chartOptions = chartOptions;
+  }
+
   /**
    * Cette fonction TypeScript vérifie si la valeur d'intensité répond à une certaine condition basée sur
    * une valeur d'indicateur.
@@ -203,6 +242,7 @@ export class AppComponent implements OnInit {
    */
   public onIntensityChange(): void {
     localStorage.setItem(keyStorageIndicator, this.indicatorValue.toString());
+    this.updateChatOptions();
   }
 
   /**
@@ -277,6 +317,8 @@ export class AppComponent implements OnInit {
       } else {
         this.carbonMoyIntensity = 0;
       }
+
+      this.updateChatOptions();
     } catch (error) {
       console.error(
         "Erreur lors de la récupération des données d'intensité carbone",
