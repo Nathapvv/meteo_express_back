@@ -6,7 +6,7 @@ import { LogService } from './log.service';
 
 @Injectable()
 export class ApiService {
-  private apiGetIntensity = environment.baseUrlBack + 'meteo/meteotoday';
+  private apiGetIntensity = environment.baseUrlBack + 'meteo/meteoday';
   private apiGetLocation = environment.baseUrlBack + 'locations';
 
   constructor(private http: HttpClient, private logService: LogService) {}
